@@ -40,16 +40,24 @@ createPost({ title: "Karma is a B*tch", body: "It is what it is" })
   })
   .catch((err) => console.error(err));
 
-const promise1 = Promise.resolve("First");
-const promise2 = 123123;
-const promise3 = new Promise((resolve, reject) => {
-  setTimeout(resolve, 2000, "Bye");
-});
+async function getUsers() {
+  const response = await fetch(
+    "https://jsonplaceholder.typicode.com/posts"
+  ).then((res) => res.json());
+  console.log(response);
+}
+getUsers();
 
-const promise4 = fetch("https://jsonplaceholder.typicode.com/posts").then(
-  (result) => result.json()
-);
+// const promise1 = Promise.resolve("First");
+// const promise2 = 123123;
+// const promise3 = new Promise((resolve, reject) => {
+//   setTimeout(resolve, 2000, "Bye");
+// });
 
-Promise.all([promise1, promise2, promise3, promise4]).then((values) => {
-  console.log({ values });
-});
+// const promise4 = fetch("https://jsonplaceholder.typicode.com/posts").then(
+//   (result) => result.json()
+// );
+
+// Promise.all([promise1, promise2, promise3, promise4]).then((values) => {
+//   console.log({ values });
+// });
