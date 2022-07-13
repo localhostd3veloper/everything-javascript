@@ -23,7 +23,7 @@ function createPost(newPost) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       posts.push(newPost);
-      const err = true;
+      const err = false;
 
       if (!err) {
         resolve();
@@ -39,3 +39,13 @@ createPost({ title: "Karma is a B*tch", body: "It is what it is" })
     getPosts();
   })
   .catch((err) => console.error(err));
+
+const promise1 = Promise.resolve("First");
+const promise2 = 123123;
+const promise3 = new Promise((resolve, reject) => {
+  setTimeout(resolve, 2000, "Bye");
+});
+
+Promise.all([promise1, promise2, promise3]).then((values) => {
+  console.log({ values });
+});
