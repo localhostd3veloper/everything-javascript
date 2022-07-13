@@ -7,4 +7,13 @@ const promise = new Promise((resolve, reject) => {
   }
 });
 
-promise.then((res) => console.log(res));
+// promise.then((res) => console.log(res));
+
+promise
+  .then((result) => result + "?")
+  .then((res1) => res1 + "*")
+  .then((res2) => {
+    console.log(res2);
+    // throw Error("Dimag Kharab BC!");
+  })
+  .catch((err) => console.error({ err: err.message }));
